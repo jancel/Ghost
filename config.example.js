@@ -13,19 +13,29 @@ config = {
         url: 'http://my-ghost-blog.com',
         mail: {},
         database: {
-            client: 'sqlite3',
+            client: 'postgres',
             connection: {
-                filename: path.join(__dirname, '/content/data/ghost.db')
+              host: process.env.POSTGRES_HOST, 
+              user: process.env.POSTGRES_USER,
+              password: process.env.POSTGRES_PASSWORD,
+              database: process.env.POSTGRES_DATABASE,
+              port: process.env.POSTGRES_PORT
             },
             debug: false
         },
 
         server: {
             // Host to be passed to node's `net.Server#listen()`
-            host: '127.0.0.1',
             // Port to be passed to node's `net.Server#listen()`, for iisnode set this to `process.env.PORT`
-            port: '2368'
-        }
+            host: '0.0.0.0',
+            port: process.env.PORT
+        },
+        aws: {
+              accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+              secretAccessKey: process.AWS_SECRET_ACCESS_KEY,
+              bucket: process.env.AWS_BUCKET,
+              region: process.env.AWS_REGION
+        },
     },
 
     // ### Development **(default)**

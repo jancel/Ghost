@@ -1,5 +1,8 @@
 var errors  = require('../errors'),
-    storage = {};
+    storage = require('ghost-s3')({
+        errors: errors,
+        config: require('../config')().aws
+    });
 
 function getStorage(storageChoice) {
     // TODO: this is where the check for storage apps should go

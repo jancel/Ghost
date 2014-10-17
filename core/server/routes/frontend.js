@@ -2,6 +2,7 @@ var frontend    = require('../controllers/frontend'),
     config      = require('../config'),
     express     = require('express'),
     utils       = require('../utils'),
+    api         = require('../api'),
 
     frontendRoutes;
 
@@ -28,6 +29,7 @@ frontendRoutes = function () {
     });
 
     // ### Frontend routes
+    router.get('/api/public/posts/', api.http(api.posts.browse));
     router.get('/rss/', frontend.rss);
     router.get('/rss/:page/', frontend.rss);
     router.get('/feed/', function redirect(req, res) {

@@ -14,6 +14,24 @@ There are a few different ways to install Ghost, take care to use the method whi
 
 **Please note** - the downloadable zip files we provide on [Ghost.org](http://ghost.org/download), the [GitHub releases page](https://github.com/TryGhost/Ghost/releases), and via npm are pre-built packages designed for getting setup quickly. Cloning from the git repository requires you to install several dependencies and build the assets yourself. 
 
+### Heroku Installation & Additional Detail
+I will try to keep this branch tracking Ghost Stable.  Use it to install
+heroku.  Here is what's needed:
+1. Set up Heroku & AWS S3 Bucket
+1. Add Keys for Production Postgres:
+  a. heroku config:set POSTGRES_HOST=host
+  b. heroku config:set POSTGRES_USER=user
+  c. heroku config:set POSTGRES_PASSWORD=password
+  d. heroku config:set POSTGRES_DATABASE=database
+1. Ad Keys for Amazon S3:
+  a. heroku config:set AWS_ACCESS_KEY_ID=myAccessKeyId
+  b. heroku config:set AWS_SECRET_ACCESS_KEY=mySecretAccessKey
+  c. heroku config:set AWS_BUCKET=myBucket
+  d. heroku config:set AWS_REGION=myRegion
+
+This branch also exposes a resource for a browse api for blogs, not a
+smart resource. Just a api. http://<your_blog_url>/api/public/posts
+
 ### Install from zip (fastest & best for bloggers)
 
 If you just want to get a Ghost blog running in the fastest time possible, this method is for you.
