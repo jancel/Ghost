@@ -32,7 +32,7 @@ config = {
         },
         aws: {
               accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-              secretAccessKey: process.AWS_SECRET_ACCESS_KEY,
+              secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
               bucket: process.env.AWS_BUCKET,
               region: process.env.AWS_REGION
         },
