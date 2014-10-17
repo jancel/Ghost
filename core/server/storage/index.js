@@ -1,8 +1,5 @@
 var errors  = require('../errors'),
-    storage = require('ghost-s3')({
-        errors: errors,
-        config: require('../config')().aws
-    });
+    storage = {};
 
 function getStorage(storageChoice) {
     // TODO: this is where the check for storage apps should go
@@ -15,7 +12,11 @@ function getStorage(storageChoice) {
 
     try {
         // TODO: determine if storage has all the necessary methods.
-        storage[storageChoice] = require('./' + storageChoice);
+        storage[storageChoice] = require('ghost-s3')({
+            errors: errors,
+            config: require('../config')().aws
+        });
+    })
     } catch (e) {
         errors.logError(e);
     }
